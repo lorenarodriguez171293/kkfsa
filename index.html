@@ -129,6 +129,12 @@
 </head>
 <body>
 
+<!-- 🔵 BOTÓN UNIVERSAL AGREGADO (no se modificó nada más) -->
+<button onclick="window.location.href='https://lorenarodriguez171293.github.io/kkfsa/'"
+        style="position:fixed;top:12px;left:12px;padding:12px 20px;background:#007aff;color:white;font-size:16px;border:none;border-radius:12px;cursor:pointer;z-index:9999999;">
+    Volver al Panel
+</button>
+
 <!-- Pantalla inicial -->
 <div id="introScreen">
     <img src="https://raw.githubusercontent.com/lorenarodriguez171293/kkfsa/main/Gemini_Generated_Image_z9txzuz9txzuz9tx.png">
@@ -153,6 +159,9 @@
 <!-- Íconos -->
 <div class="sim-icons">
 
+    <!-- ⭐ PRIMER ICONO: Información general -->
+    <i class="fas fa-info-circle" onclick="abrirSimulador('info_energias.html')" title="Introducción a las Energías Alternativas"></i>
+
     <!-- Originales -->
     <i class="fas fa-bolt" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/fotovol/')"></i>
     <i class="fas fa-wind" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/eolica01/')"></i>
@@ -163,13 +172,10 @@
     <!-- 🌎 Mapa interactivo -->
     <i class="fas fa-globe-americas" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/mapainteractivo01/')" title="Mapa Energético de Argentina"></i>
 
-    <!-- ℹ️ Información de energías -->
-    <i class="fas fa-info-circle" onclick="abrirSimulador('info_energias.html')" title="Información de las Energías"></i>
-
     <!-- 🏠 Simulador del hogar -->
     <i class="fas fa-home" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/casaconsumo/')" title="Simulador de Consumo del Hogar"></i>
 
-    <!-- 📝 **Nuevo: Autoevaluación** -->
+    <!-- 📝 Autoevaluación -->
     <i class="fas fa-clipboard-check" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/autoeva/')" title="Autoevaluación de Energías Alternativas"></i>
 
 </div>
@@ -225,4 +231,3 @@ function volver() {
 
 </body>
 </html>
-
