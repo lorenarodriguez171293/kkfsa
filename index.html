@@ -97,69 +97,46 @@
         /* -------------------------------------------- */
         /*     MODO PANTALLA COMPLETA PARA CELULARES    */
         /* -------------------------------------------- */
-        @media (max-width: 768px) {
+       @media (max-width: 768px) {
 
-            body.fullscreen-mode header {
-                height: auto;
-                padding: 12px 10px;
-            }
+    /* Contenedor del selector */
+    body.fullscreen-mode #icon-selector {
+        gap: 8px;
+        padding: 4px 6px;
+    }
 
-            body.fullscreen-mode #icon-selector {
-                display: flex;
-                overflow-x: auto;
-                flex-wrap: nowrap;
-                gap: 12px;
-                padding: 5px 10px;
-            }
+    /* Tamaño reducido de cada icono (más pequeños que la versión anterior) */
+    body.fullscreen-mode .sim-link {
+        width: 58px;          /* tamaño equilibrado */
+        min-height: 58px;
+        padding: 6px;
+        border-radius: 10px;
+    }
 
-            /* ICONOS MÁS GRANDES EN CELULAR */
-            body.fullscreen-mode .sim-link {
-                width: 70px;
-                min-height: 70px;
-                padding: 8px;
-                border-radius: 12px;
-            }
+    /* Icono principal */
+    body.fullscreen-mode .sim-link i {
+        font-size: 1.9rem;    /* un 10% más grande que el original */
+    }
 
-            body.fullscreen-mode .sim-link i {
-                font-size: 2.2rem;
-            }
+    /* Texto debajo del icono (si lo usás) */
+    body.fullscreen-mode .sim-link span {
+        display: block;
+        font-size: 0.70rem;
+        margin-top: 4px;
+    }
 
-            body.fullscreen-mode .sim-link span {
-                display: block;
-                font-size: 0.75rem;
-                margin-top: 4px;
-            }
+    /* Header sin ocupar demasiado espacio */
+    body.fullscreen-mode header {
+        height: auto;
+        padding: 6px 8px;
+    }
 
-            /* IFRAME AJUSTADO PARA CELULAR */
-            body.fullscreen-mode #simulador-frame {
-                position: fixed;
-                top: 110px;
-                left: 0;
-                width: 100vw;
-                height: calc(100vh - 160px);
-                z-index: 5;
-            }
+    /* Ajuste para que el simulador tenga espacio */
+    body.fullscreen-mode main {
+        padding-top: 10px; /* Evita que los iconos empujen todo hacia abajo */
+    }
+}
 
-            /* BOTÓN SALIR */
-            #exit-fullscreen {
-                display: none;
-                position: fixed;
-                bottom: 10px;
-                right: 10px;
-                z-index: 50;
-                background: #e74c3c;
-                color: white;
-                padding: 12px 18px;
-                border-radius: 8px;
-                font-size: 1rem;
-                font-weight: bold;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-                border: none;
-            }
-
-            body.fullscreen-mode #exit-fullscreen {
-                display: block;
-            }
         }
     </style>
 </head>
