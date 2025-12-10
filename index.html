@@ -58,20 +58,33 @@
         border: 5px solid #ddd;
     }
 
-    /* ---- MENÚ SELECTOR DESLIZABLE ---- */
+    /* Menu deslizable */
     .sim-icons {
         display: flex;
         gap: 18px;
         margin-top: 15px;
-
-        overflow-x: auto;           /* Permite deslizar horizontalmente */
+        overflow-x: auto;
         white-space: nowrap;
         padding: 10px;
         scroll-snap-type: x mandatory;
     }
 
     .sim-icons::-webkit-scrollbar {
-        display: none;              /* Oculta scrollbar */
+        display: none;
+    }
+
+    /* Contenedor individual */
+    .sim-item {
+        text-align: center;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+    }
+
+    .sim-item span {
+        display: block;
+        font-size: 10px;
+        margin-top: 4px;
+        color: #333;
     }
 
     .sim-icons i {
@@ -81,17 +94,14 @@
         border-radius: 12px;
         cursor: pointer;
         transition: 0.2s;
-        flex-shrink: 0;             /* evita que se achiquen */
-        scroll-snap-align: center;
     }
 
-    /* Cuando se abre un simulador → menú más chico */
+    /* Menu pequeño */
     .mini-menu i {
         font-size: 24px !important;
         padding: 10px !important;
     }
 
-    /* Iframe donde se cargan los simuladores */
     #visorSimulador {
         width: 100%;
         height: 87vh;
@@ -113,49 +123,70 @@
     <h2>Simuladores de Energía</h2>
 </header>
 
-<!-- *** RETIRADO EL DESLIZADOR AZUL *** -->
-
-<!-- Íconos → ahora deslizable -->
+<!-- Íconos con nombres -->
 <div class="sim-icons" id="menuSelector">
 
-    <i class="fas fa-info-circle" onclick="abrirSimulador('info_energias.html')" title="Introducción a las Energías Alternativas"></i>
+    <div class="sim-item">
+        <i class="fas fa-info-circle" onclick="abrirSimulador('info_energias.html')"></i>
+        <span>Introducción</span>
+    </div>
 
-    <i class="fas fa-bolt" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/fotovol/')" title="Solar Fotovoltaica"></i>
+    <div class="sim-item">
+        <i class="fas fa-bolt" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/fotovol/')"></i>
+        <span>Solar</span>
+    </div>
 
-    <i class="fas fa-wind" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/eolica01/')" title="Energía Eólica"></i>
+    <div class="sim-item">
+        <i class="fas fa-wind" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/eolica01/')"></i>
+        <span>Eólica</span>
+    </div>
 
-    <i class="fas fa-atom" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/NU1/')" title="Energía Nuclear"></i>
+    <div class="sim-item">
+        <i class="fas fa-atom" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/NU1/')"></i>
+        <span>Nuclear</span>
+    </div>
 
-    <i class="fas fa-water" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/hidro/')" title="Energía Hidráulica"></i>
+    <div class="sim-item">
+        <i class="fas fa-water" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/hidro/')"></i>
+        <span>Hidráulica</span>
+    </div>
 
-    <i class="fas fa-leaf" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/biodisel/')" title="Biocombustibles"></i>
+    <div class="sim-item">
+        <i class="fas fa-leaf" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/biodisel/')"></i>
+        <span>Biocombustibles</span>
+    </div>
 
-    <i class="fas fa-globe-americas" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/mapainteractivo01/')" title="Mapa Energético"></i>
+    <div class="sim-item">
+        <i class="fas fa-globe-americas" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/mapainteractivo01/')"></i>
+        <span>Mapa</span>
+    </div>
 
-    <i class="fas fa-home" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/casaconsumo/')" title="Simulador del Hogar"></i>
+    <div class="sim-item">
+        <i class="fas fa-home" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/casaconsumo/')"></i>
+        <span>Hogar</span>
+    </div>
 
-    <i class="fas fa-clipboard-check" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/autoeva/')" title="Autoevaluación"></i>
+    <div class="sim-item">
+        <i class="fas fa-clipboard-check" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/autoeva/')"></i>
+        <span>Autoeval.</span>
+    </div>
 
 </div>
 
-<!-- Visor -->
 <iframe id="visorSimulador"></iframe>
 
 <script>
-/* Pantalla inicial */
 window.onload = () => {
     setTimeout(() => {
         document.getElementById("introScreen").style.display = "none";
     }, 2000);
 };
 
-/* Abrir simuladores dentro del iframe */
+/* Abrir simuladores */
 function abrirSimulador(url) {
     const visor = document.getElementById("visorSimulador");
     visor.src = url;
     visor.style.display = "block";
-
-    /* MENU SE ACHICA AUTOMÁTICAMENTE */
     document.getElementById("menuSelector").classList.add("mini-menu");
 }
 </script>
