@@ -107,6 +107,24 @@
         cursor: pointer;
         display: none;
     }
+
+    /* ---------------------- Botón volver al panel central ---------------------- */
+
+    #volverPanel {
+        position: fixed;
+        bottom: 15px;
+        right: 15px;
+        padding: 12px 18px;
+        background: #007aff;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        display: none;
+        z-index: 99999;
+    }
+
 </style>
 </head>
 <body>
@@ -118,6 +136,9 @@
 
 <!-- Botón Salir Fullscreen -->
 <button id="salirFull">Salir Pantalla Completa</button>
+
+<!-- Botón Volver -->
+<button id="volverPanel" onclick="volver()">Volver al panel principal</button>
 
 <header>
     <img src="https://raw.githubusercontent.com/lorenarodriguez171293/kkfsa/main/Gemini_Generated_Image_z9txzuz9txzuz9tx.png">
@@ -131,21 +152,25 @@
 
 <!-- Íconos -->
 <div class="sim-icons">
+
+    <!-- Originales -->
     <i class="fas fa-bolt" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/fotovol/')"></i>
     <i class="fas fa-wind" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/eolica01/')"></i>
     <i class="fas fa-atom" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/NU1/')"></i>
     <i class="fas fa-water" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/hidro/')"></i>
     <i class="fas fa-leaf" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/biodisel/')"></i>
- <!-- NUEVOS ÍCONOS -->
 
     <!-- 🌎 Mapa interactivo -->
     <i class="fas fa-globe-americas" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/mapainteractivo01/')" title="Mapa Energético de Argentina"></i>
 
-    <!-- 📘 Pantalla inicial / Información sobre energías -->
+    <!-- ℹ️ Información de energías -->
     <i class="fas fa-info-circle" onclick="abrirSimulador('info_energias.html')" title="Información de las Energías"></i>
 
-    <!-- 🏠 Simulador de consumo del hogar -->
+    <!-- 🏠 Simulador del hogar -->
     <i class="fas fa-home" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/casaconsumo/')" title="Simulador de Consumo del Hogar"></i>
+
+    <!-- 📝 **Nuevo: Autoevaluación** -->
+    <i class="fas fa-clipboard-check" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/autoevaluacion/')" title="Autoevaluación de Energías Alternativas"></i>
 
 </div>
 
@@ -168,6 +193,7 @@ function entrarPantallaCompleta() {
     else if (elem.msRequestFullscreen) elem.msRequestFullscreen();
 
     document.getElementById("salirFull").style.display = "block";
+    document.getElementById("volverPanel").style.display = "block";
 }
 
 function salirPantallaCompleta() {
@@ -176,9 +202,10 @@ function salirPantallaCompleta() {
     else if (document.msExitFullscreen) document.msExitFullscreen();
 
     document.getElementById("salirFull").style.display = "none";
+    document.getElementById("volverPanel").style.display = "none";
 }
 
-/* Botón */
+/* Botón salir fullscreen */
 document.getElementById("salirFull").onclick = salirPantallaCompleta;
 
 /* ---------------------- Abrir simuladores ---------------------- */
@@ -188,7 +215,14 @@ function abrirSimulador(url) {
         window.location.href = url;
     }, 300);
 }
+
+/* ---------------------- Volver al panel ---------------------- */
+function volver() {
+    salirPantallaCompleta();
+    window.location.href = "index.html";
+}
 </script>
 
 </body>
 </html>
+
