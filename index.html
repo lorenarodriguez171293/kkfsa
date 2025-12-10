@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simuladores de Energía Argentina</title>
 
-    <!-- Favicon (tu imagen redonda) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/lorenarodriguez171293/kkfsa/main/Gemini_Generated_Image_z9txzuz9txzuz9tx.png">
 
     <!-- Iconos FontAwesome -->
@@ -20,7 +20,7 @@
         overflow-x: hidden;
     }
 
-    /* ---------------------- Pantalla de Inicio ---------------------- */
+    /* Pantalla de inicio */
     #introScreen {
         position: fixed;
         top: 0; left: 0;
@@ -46,8 +46,7 @@
         to { opacity: 1; transform: scale(1); }
     }
 
-    /* ---------------------- Título ---------------------- */
-
+    /* Título */
     header {
         text-align: center;
         padding: 10px;
@@ -59,27 +58,25 @@
         border: 5px solid #ddd;
     }
 
-    /* ---------------------- Deslizador ---------------------- */
-
+    /* Deslizador */
     .slider-container {
         width: 90%;
         margin: 0 auto;
         text-align: center;
     }
 
-    /* ---------------------- Iconos ---------------------- */
-
+    /* Íconos */
     .sim-icons {
         display: flex;
         justify-content: center;
-        gap: 25px;
-        margin-top: 20px;
+        gap: 22px;
+        margin-top: 15px;
         flex-wrap: wrap;
     }
 
     .sim-icons i {
-        font-size: 40px;
-        padding: 18px;
+        font-size: 34px;
+        padding: 14px;
         background: #f0f0f0;
         border-radius: 12px;
         cursor: pointer;
@@ -91,60 +88,22 @@
         transform: scale(1.1);
     }
 
-    /* ---------------------- Botón Salir Fullscreen ---------------------- */
-
-    #salirFull {
-        position: fixed;
-        top: 12px;
-        right: 12px;
-        padding: 10px 16px;
-        background: #ff5757;
-        color: white;
+    /* Iframe donde se cargan los simuladores */
+    #visorSimulador {
+        width: 100%;
+        height: 87vh;
         border: none;
-        border-radius: 10px;
-        font-size: 14px;
-        z-index: 99999;
-        cursor: pointer;
+        margin-top: 20px;
         display: none;
     }
-
-    /* ---------------------- Botón volver al panel central ---------------------- */
-
-    #volverPanel {
-        position: fixed;
-        bottom: 15px;
-        right: 15px;
-        padding: 12px 18px;
-        background: #007aff;
-        color: white;
-        font-size: 16px;
-        border: none;
-        border-radius: 12px;
-        cursor: pointer;
-        display: none;
-        z-index: 99999;
-    }
-
 </style>
 </head>
 <body>
-
-<!-- 🔵 BOTÓN UNIVERSAL AGREGADO (no se modificó nada más) -->
-<button onclick="window.location.href='https://lorenarodriguez171293.github.io/kkfsa/'"
-        style="position:fixed;top:12px;left:12px;padding:12px 20px;background:#007aff;color:white;font-size:16px;border:none;border-radius:12px;cursor:pointer;z-index:9999999;">
-    Volver al Panel
-</button>
 
 <!-- Pantalla inicial -->
 <div id="introScreen">
     <img src="https://raw.githubusercontent.com/lorenarodriguez171293/kkfsa/main/Gemini_Generated_Image_z9txzuz9txzuz9tx.png">
 </div>
-
-<!-- Botón Salir Fullscreen -->
-<button id="salirFull">Salir Pantalla Completa</button>
-
-<!-- Botón Volver -->
-<button id="volverPanel" onclick="volver()">Volver al panel principal</button>
 
 <header>
     <img src="https://raw.githubusercontent.com/lorenarodriguez171293/kkfsa/main/Gemini_Generated_Image_z9txzuz9txzuz9tx.png">
@@ -159,75 +118,47 @@
 <!-- Íconos -->
 <div class="sim-icons">
 
-    <!-- ⭐ PRIMER ICONO: Información general -->
+    <!-- ⭐ Información general -->
     <i class="fas fa-info-circle" onclick="abrirSimulador('info_energias.html')" title="Introducción a las Energías Alternativas"></i>
 
-    <!-- Originales -->
-    <i class="fas fa-bolt" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/fotovol/')"></i>
-    <i class="fas fa-wind" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/eolica01/')"></i>
-    <i class="fas fa-atom" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/NU1/')"></i>
-    <i class="fas fa-water" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/hidro/')"></i>
-    <i class="fas fa-leaf" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/biodisel/')"></i>
+    <!-- Simuladores -->
+    <i class="fas fa-bolt" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/fotovol/')" title="Solar Fotovoltaica"></i>
 
-    <!-- 🌎 Mapa interactivo -->
-    <i class="fas fa-globe-americas" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/mapainteractivo01/')" title="Mapa Energético de Argentina"></i>
+    <i class="fas fa-wind" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/eolica01/')" title="Energía Eólica"></i>
 
-    <!-- 🏠 Simulador del hogar -->
-    <i class="fas fa-home" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/casaconsumo/')" title="Simulador de Consumo del Hogar"></i>
+    <i class="fas fa-atom" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/NU1/')" title="Energía Nuclear"></i>
 
-    <!-- 📝 Autoevaluación -->
-    <i class="fas fa-clipboard-check" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/autoeva/')" title="Autoevaluación de Energías Alternativas"></i>
+    <i class="fas fa-water" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/hidro/')" title="Energía Hidráulica"></i>
+
+    <i class="fas fa-leaf" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/biodisel/')" title="Biocombustibles"></i>
+
+    <i class="fas fa-globe-americas" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/mapainteractivo01/')" title="Mapa Energético"></i>
+
+    <i class="fas fa-home" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/casaconsumo/')" title="Simulador del Hogar"></i>
+
+    <i class="fas fa-clipboard-check" onclick="abrirSimulador('https://lorenarodriguez171293.github.io/autoeva/')" title="Autoevaluación"></i>
 
 </div>
 
-</div>
+<!-- El visor donde se cargarán los simuladores -->
+<iframe id="visorSimulador"></iframe>
 
 <script>
-/* ------------------------- Pantalla inicial ------------------------- */
+/* Pantalla inicial */
 window.onload = () => {
     setTimeout(() => {
         document.getElementById("introScreen").style.display = "none";
     }, 2000);
 };
 
-/* ---------------------- Control de Fullscreen ---------------------- */
-function entrarPantallaCompleta() {
-    const elem = document.documentElement;
-
-    if (elem.requestFullscreen) elem.requestFullscreen();
-    else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
-    else if (elem.msRequestFullscreen) elem.msRequestFullscreen();
-
-    document.getElementById("salirFull").style.display = "block";
-    document.getElementById("volverPanel").style.display = "block";
-}
-
-function salirPantallaCompleta() {
-    if (document.exitFullscreen) document.exitFullscreen();
-    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-    else if (document.msExitFullscreen) document.msExitFullscreen();
-
-    document.getElementById("salirFull").style.display = "none";
-    document.getElementById("volverPanel").style.display = "none";
-}
-
-/* Botón salir fullscreen */
-document.getElementById("salirFull").onclick = salirPantallaCompleta;
-
-/* ---------------------- Abrir simuladores ---------------------- */
+/* Abrir simuladores dentro del iframe */
 function abrirSimulador(url) {
-    entrarPantallaCompleta();
-    setTimeout(() => {
-        window.location.href = url;
-    }, 300);
-}
-
-/* ---------------------- Volver al panel ---------------------- */
-function volver() {
-    salirPantallaCompleta();
-    window.location.href = "index.html";
+    const visor = document.getElementById("visorSimulador");
+    visor.src = url;
+    visor.style.display = "block";
 }
 </script>
 
 </body>
 </html>
+
